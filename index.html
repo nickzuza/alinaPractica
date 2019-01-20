@@ -16,7 +16,7 @@
             <button class="close" v-on:click="closeModal">+</button>
             <product :item="items[chosedProd]" v-on:changed="inCartAdd" :ref="'prod'+chosedProd" v-on:remove-from-modal="handleRemFromModal" :is-modal="true"/>
         </div>
-        
+
         <header class="header">
             <div class="head">
                 <div class="container">
@@ -432,16 +432,19 @@
                     new: 175
                 },
                 sale: false
-            }, {
+            },
+             {
                 id: 2,
                 name: 'Double layer top',
                 text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, porro!',
                 img: 'https://i.simpalsmedia.com/marketplace/products/original/4011f6e25b3a4a95702915ffaa45b8d5.jpg',
                 price: {
-                    new: 200
+                    new: 200,
+                    old: 340
                 },
                 sale: false
-            }, {
+            },
+             {
                 id: 3,
                 name: 'V-neck cotton t-shirt',
                 inBasket: false,
