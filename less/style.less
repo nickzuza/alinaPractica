@@ -72,6 +72,143 @@ button{
     justify-content: center;
 }
 
+.modal {
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 11111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+
+    .close {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        color:#fff;
+        background-color: transparent;
+        font-size: 40px;
+        transform: rotate(45deg);
+        border-color: transparent;
+        z-index: 11111;
+
+        .screen(0 ,  @s960, {
+            top: 3px;
+            font-size: 30px;
+        });
+    }
+
+    .item {
+        max-width: 500px;
+        padding: 20px 40px;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 2px 5px  rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+
+        .screen(@s480,  @s960, {
+            padding: 20px;
+        });
+
+        .title {
+            order:-1;
+            font-family: 'Montserrat';
+            padding: 10px 40px;
+            width: 100%;
+            position: relative;
+            margin: -20px 0 15px -40px;
+            border-radius:3px 3px 0 0;
+            color:#FFF;
+            background-color: @blue1;
+            box-shadow: 0 3px 5px -2px rgba(0, 0, 0, 0.2);
+        }
+
+        .img {
+            transition: 0.3s;
+            width: 100%;
+            height: 300px;
+            background-size: contain;
+            margin-bottom:30px;
+            background-color: #fff;
+        }
+
+        .text {
+            padding: 10px 0;
+            font-family: @font1;
+        }
+
+        .prices {
+            font-family: @font2;
+            display: flex;
+            justify-content: space-between;
+
+            .old, .new {
+                &:after {
+                    content:'USD';
+                }
+            }
+
+            .old {
+                display: block;
+                color:#999;
+                text-decoration: line-through;
+                padding: 0 10px;
+
+            }
+        }
+
+        .bottom-block {
+            margin: 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+
+            .count {
+                button {
+                    border-radius: 3px;
+                    background-color: @blue1;
+                    color:#fff;
+                    width: 40px;
+                    padding: 5px 0;
+                    border: 1px solid  @blue1;
+                }
+
+                input {
+                    &[type=number]::-webkit-inner-spin-button, 
+                    &[type=number]::-webkit-outer-spin-button { 
+                        -webkit-appearance: none; 
+                        margin: 0; 
+                    }
+
+                    border:none;
+                    width: 50px;
+                    text-align: center;
+                }
+            }
+
+            .toCard {
+                font-family: @font2;
+                background-color: @blue1;
+                color: #fff;
+                border: 1px solid @blue1;
+                padding: 3px 10px;
+                border-radius: 3px;
+
+                &.del {
+                    background-color: #d32f2f;
+                    border: 1px solid #d32f2f;
+                }
+            }
+            
+        }
+
+    }
+}
 .header{
         width: 100%;
         height: 330px;

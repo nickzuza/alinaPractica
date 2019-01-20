@@ -7,6 +7,8 @@ window.Velocity = require('velocity-animate');
 window.page = new Vue({
   el:'#app',
   data:{
+    modal:false,
+    chosedProd: null,
     items:window.prods,
     inCartItms:{
       count:0,
@@ -30,7 +32,9 @@ window.page = new Vue({
   },
   methods:{
     inCartAdd(item){
+      this.items[item.id].inBasket=true;
       this.inCartItms.items.push(item);
+      this.closeModal();
       this.inCartItmsCount();  
     },
     inCartItmsCount(){
@@ -39,16 +43,31 @@ window.page = new Vue({
         this.inCartItms.count += this.inCartItms.items[i].quant;
       }   
     },
-    removeItem(id){
+    removeItem(id) {
       for(let i = 0 ; i < this.inCartItms.items.length;i++){
         if(this.inCartItms.items[i].id === id){
            let itmsText= this.inCartItms.items[i].quant >1 ? 'items':'item';
+           this.items[id].inBasket = false;
            alert('removed from cart  '+ this.inCartItms.items[i].quant +' '+itmsText);
           this.inCartItms.items.splice(i, 1);
         }
       }
       this.inCartItmsCount(); 
+    },
+    handleRemFromModal(id){
+      this.removeItem(id);
+      this.closeModal();
+    },
+    closeModal(){
+      this.modal = false;
+      this.chosedProd = null;
+      document.getElementsByTagName('body')[0].classList.remove('scr-no');
+    },
 
+    openItem(id) {
+      document.getElementsByTagName('body')[0].classList.add('scr-no');
+      this.chosedProd = id;
+      this.modal = true;
     }
 
   },

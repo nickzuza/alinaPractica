@@ -12,6 +12,10 @@
 
 <body>
     <div id="app">
+        <div v-if="modal" class="modal">
+            <button class="close" v-on:click="closeModal">+</button>
+            <product :item="items[chosedProd]" v-on:changed="inCartAdd" :ref="'prod'+chosedProd" v-on:remove-from-modal="handleRemFromModal" :is-modal="true"/>
+        </div>
         <header class="header">
             <div class="head">
                 <div class="container">
@@ -240,7 +244,7 @@
                 </div>
                 <div class="prods__products">
                     <div class="prods__products__wrap">
-                        <product v-for="(prod , index) in items" :item="prod" v-on:changed="inCartAdd" v-on:remove="removeItem" :ref="'prod'+index" :key="prod.id"></product>
+                        <product v-for="(prod , index) in items" :item="prod" v-on:changed="inCartAdd" v-on:remove="removeItem" v-on:chose_item="openItem" :ref="'prod'+index" :key="prod.id"></product>
                     </div>
                 </div>
             </div>
@@ -290,7 +294,7 @@
     <div class="parteners">
         <div class="part" style="background-image:url(http://modular.perfectusinc.com/home/templates/modular/img/other/agency-logo6.png)"></div>
         <div class="part" style="background-image:url(http://buvejam.lv/image/Proizvoditeli/knauf.png)"></div>
-        <div class="part" style="background-image:url(http://martinarismendy.com/wp-content/uploads/2016/11/verde-logo2.png)"></div>
+        <div class="part" style="background-image:url(http://www3.mallofmauritius.com/files/shops/7/1456308655.jpg)"></div>
         <div class="part" style="background-image:url(http://www.pruebas.co.pe/villatex/images/logo-villatex-main.png)"></div>
     </div>
     <footer class="footer">
@@ -402,7 +406,6 @@
                 </div>
             </div>
         </div>
-
     </footer>
     <script>
         window.prods = [
@@ -410,7 +413,9 @@
             {
                 id: 0,
                 name: 'Essential cotton-blend',
-                img: 'https://i.simpalsmedia.com/marketplace/products/original/4011f6e25b3a4a95702915ffaa45b8d5.jpg',
+                inBasket: false,
+                text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero optio eius autem adipisci quam aspernatur temporibus quae quasi quibusdam!',
+                img: 'https://media.gettyimages.com/photos/winter-clothes-white-background-picture-id470278121',
                 price: {
                     new: 100,
                     old: 200
@@ -419,7 +424,9 @@
             }, {
                 id: 1,
                 name: 'Ruffle sleeve t-shirt',
-                img: 'https://i.simpalsmedia.com/marketplace/products/original/4011f6e25b3a4a95702915ffaa45b8d5.jpg',
+                inBasket: false,
+                text:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat molestiae eligendi voluptas qui accusantium vero!',
+                img: 'https://st2.depositphotos.com/5624298/10185/i/450/depositphotos_101855470-stock-photo-clothes-on-a-white-background.jpg',
                 price: {
                     new: 175
                 },
@@ -427,6 +434,7 @@
             }, {
                 id: 2,
                 name: 'Double layer top',
+                text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, porro!',
                 img: 'https://i.simpalsmedia.com/marketplace/products/original/4011f6e25b3a4a95702915ffaa45b8d5.jpg',
                 price: {
                     new: 200
@@ -435,7 +443,9 @@
             }, {
                 id: 3,
                 name: 'V-neck cotton t-shirt',
-                img: 'https://i.simpalsmedia.com/marketplace/products/original/4011f6e25b3a4a95702915ffaa45b8d5.jpg',
+                inBasket: false,
+                text:'Lorem ipsum  amet consectetur  Fuga, porro! adipisicing elit. Fuga, porro! dolor sit dolor sit.',
+                img: 'http://www.allwhitebackground.com/images/4/Blazer-For-Men-White-Background-Free-Picture.jpg',
                 price: {
                     new: 100
                 },
@@ -443,7 +453,9 @@
             }, {
                 id: 4,
                 name: 'Message cotton t-shirt',
-                img: 'https://i.simpalsmedia.com/marketplace/products/original/4011f6e25b3a4a95702915ffaa45b8d5.jpg',
+                inBasket: false,
+                text:'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                img: 'https://i.linio.com/p/e50e08cc115acbb5b7296360068ba66d-product.jpg',
                 price: {
                     new: 100
                 },
