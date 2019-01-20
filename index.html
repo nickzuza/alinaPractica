@@ -16,6 +16,7 @@
             <button class="close" v-on:click="closeModal">+</button>
             <product :item="items[chosedProd]" v-on:changed="inCartAdd" :ref="'prod'+chosedProd" v-on:remove-from-modal="handleRemFromModal" :is-modal="true"/>
         </div>
+        
         <header class="header">
             <div class="head">
                 <div class="container">
